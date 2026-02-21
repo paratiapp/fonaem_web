@@ -16,16 +16,18 @@
 /*===========================
     01.COMMON css 
 ===========================*/
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
   color: #6B6F92;
   overflow-x: hidden;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 * {
@@ -774,6 +776,7 @@ p {
 .hero-section .hero-content .hero-number {
   font-size: 80px;
   color: #4E6EF1;
+  line-height: 1;
 }
 
 .hero-section .hero-content p {
@@ -781,28 +784,26 @@ p {
   font-size: 24px;
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+@media only screen and (min-width: 768px) {
   .hero-section .hero-img img {
-    width: 40%;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .hero-section .hero-img img {
-    width: 60%;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .hero-section .hero-img img {
-    width: 40%;
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 767px) {
-  .hero-section .hero-img img {
-    width: 40%;
+  .hero-section .hero-content {
+    text-align: center;
+  }
 
+  .hero-section .hero-content .hero-number {
+    font-size: 60px;
+  }
+
+  .hero-section .hero-img img {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
   }
 }
 
@@ -889,9 +890,18 @@ p {
 
 @media (max-width: 991px) {
   .about-img-circle {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .new-about-section .about-content p {
+    font-size: 18px;
+    text-align: center;
   }
 }
 
@@ -1133,26 +1143,43 @@ p {
   width: 100%;
   text-align: center;
   font-size: x-large;
-  padding: 30px 0;
+  padding: 30px 15px;
   border-top: 2px solid #fff;
   background-color: #7764e8;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .copy-right p {
   margin-bottom: 0;
   margin-right: 15px;
-  /* Add some spacing between text and image */
 }
 
 .copy-right img {
-  width: auto;
+  max-width: 100%;
+  height: auto;
   max-height: 40px;
-  /* Adjust as needed */
-  /* width: 35%; Removed this as requested to align properly */
+}
+
+@media (max-width: 767px) {
+  .copy-right {
+    flex-direction: column;
+    font-size: 18px;
+    gap: 15px;
+  }
+
+  .copy-right p {
+    margin-right: 0;
+  }
+}
+
+.gallery-slider-wrapper {
+  position: relative;
+  padding: 20px 0;
+  overflow: hidden;
 }
 
 /* ======================
@@ -1879,6 +1906,256 @@ p {
 }
 
 /* ======================
+    News Section CSS
+========================= */
+.news-section {
+  background-color: #f8f7ff;
+}
+
+.news-section .section-title {
+  margin-bottom: 50px;
+}
+
+.news-section .section-title h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.news-section .section-title p {
+  color: #6B6F92;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.news-slider-wrapper {
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.news-slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.news-control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #7764e8;
+  background: transparent;
+  color: #7764e8;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.news-control-btn:hover {
+  background: #7764e8;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.news-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(49, 52, 80, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(119, 100, 232, 0.18);
+}
+
+.news-card-img {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.news-card-img--emprendimiento {
+  background: linear-gradient(135deg, #7764e8 0%, #4e6ef1 60%, #6c9fff 100%);
+}
+
+.news-card-img--emprendimiento::before {
+  content: "🏪";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+.news-card-img--financiamiento {
+  background: linear-gradient(135deg, #313450 0%, #7764e8 60%, #9b8aff 100%);
+}
+
+.news-card-img--financiamiento::before {
+  content: "📊";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+.news-card-img--tecnologia {
+  background: linear-gradient(135deg, #4e6ef1 0%, #7764e8 50%, #c084fc 100%);
+}
+
+.news-card-img--tecnologia::before {
+  content: "💡";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+.news-card-img--comunidad {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #7764e8 100%);
+}
+
+.news-card-img--comunidad::before {
+  content: "🤝";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+.news-card-img--logros {
+  background: linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #7764e8 100%);
+}
+
+.news-card-img--logros::before {
+  content: "🏆";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 64px;
+  opacity: 0.35;
+}
+
+.news-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.news-card-body {
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.news-meta {
+  font-size: 13px;
+  color: #9ca3af;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+}
+
+.news-meta i {
+  color: #7764e8;
+}
+
+.news-title {
+  font-size: 18px;
+  color: #313450;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+  margin: 0;
+}
+
+.news-card:hover .news-title {
+  color: #7764e8;
+}
+
+.news-excerpt {
+  font-size: 15px;
+  color: #6B6F92;
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.news-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #7764e8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease, color 0.2s ease;
+  margin-top: auto;
+}
+
+.news-link:hover {
+  color: #4e6ef1;
+  gap: 10px;
+}
+
+.news-link i {
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .news-section .section-title h2 {
+    font-size: 26px;
+  }
+
+  .news-card-img {
+    height: 160px;
+  }
+
+  .news-card-body {
+    padding: 20px;
+  }
+
+  .news-title {
+    font-size: 16px;
+  }
+}
+
+/* ======================
     Download App CSS
 ========================= */
 .download-app-section {
@@ -1984,8 +2261,7 @@ p {
   }
 
   .app-img {
-    margin-top: 50px;
-    margin-bottom: 0px;
+    display: none;
   }
 
   .download-app-section .app-content h1 {
@@ -2009,11 +2285,11 @@ p {
   padding: 0;
   width: 90%;
   max-width: 700px;
+  max-height: 85vh;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   background: #fff;
   margin: auto;
-  /* This centers the dialog when showModal() is called */
 }
 
 .credit-modal::backdrop {
@@ -2024,6 +2300,8 @@ p {
 .credit-modal .modal-container {
   display: flex;
   flex-direction: column;
+  max-height: 85vh;
+  overflow: hidden;
 }
 
 .credit-modal .modal-header {
@@ -2064,6 +2342,8 @@ p {
 
 .credit-modal .modal-body {
   padding: 40px 30px;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .credit-modal .modal-body ul {
@@ -2120,6 +2400,7 @@ p {
 .credit-modal[open] {
   animation: modalShow 0.4s ease-out;
 }
+
 /* ======================
     Steps Modal CSS
 ========================= */
@@ -2216,8 +2497,8 @@ p {
 }
 
 .btn-sm {
-    padding: 10px 20px !important;
-    font-size: 14px !important;
+  padding: 10px 20px !important;
+  font-size: 14px !important;
 }
 
 /* ============================
