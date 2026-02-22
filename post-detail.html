@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Detalle de Noticia - Fonaem</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon_fonaem.png" />
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        .post-detail-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .post-header h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .post-meta {
+            font-size: 16px;
+            color: #6B6F92;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .post-meta i {
+            color: var(--primary-purple);
+            margin-right: 8px;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-navy) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-image::after {
+            content: '📄';
+            font-size: 120px;
+            opacity: 0.1;
+        }
+
+        .post-content {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .post-content p {
+            margin-bottom: 25px;
+        }
+
+        .post-content h3 {
+            font-size: 26px;
+            color: var(--dark-navy);
+            margin: 40px 0 20px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-purple);
+            font-weight: 700;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--dark-navy);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 767px) {
+            .post-header h1 {
+                font-size: 30px;
+            }
+
+            .post-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area sticky">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/img/logo/fonaem_logo.png" alt="Logo" />
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ms-auto">
+                                    <li class="nav-item"><a href="index.html#home">Inicio</a></li>
+                                    <li class="nav-item"><a href="index.html#noticias">Noticias</a></li>
+                                    <li class="nav-item"><a class="active" href="blog.html">Blog</a></li>
+                                    <li class="nav-item"><a href="index.html#service">Productos</a></li>
+                                    <li class="nav-item"><a href="index.html#gallery">Galeria</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================= article display start ========================= -->
+    <section class="post-detail-section pt-150 pb-100">
+        <div class="container">
+            <div class="post-detail-wrapper">
+                <a href="blog.html" class="back-btn"><i class="lni lni-arrow-left"></i> Volver al Blog</a>
+
+                <div class="post-header wow fadeInUp" data-wow-delay=".2s">
+                    <h1>Cómo formalizar tu emprendimiento en 3 pasos efectivos</h1>
+                    <div class="post-meta">
+                        <span><i class="lni lni-calendar"></i> 22 de Febrero, 2026</span>
+                        <span><i class="lni lni-tag"></i> Guía Legal</span>
+                        <span><i class="lni lni-user"></i> Equipo Fonaem</span>
+                    </div>
+                </div>
+
+                <div class="post-image wow fadeInUp" data-wow-delay=".4s">
+                    <!-- Post image would go here -->
+                </div>
+
+                <div class="post-content wow fadeInUp" data-wow-delay=".6s">
+                    <p>La formalización no es solo un trámite legal, es la base sobre la cual se construye la
+                        credibilidad de tu negocio. En el contexto actual de Venezuela, estar registrado formalmente
+                        abre puertas a financiamientos bancarios, licitaciones y protege tu patrimonio personal.</p>
+
+                    <h3>1. Registro en el RNE</h3>
+                    <p>El primer paso fundamental es el registro en el Registro Nacional de Emprendimientos. Este
+                        certificado es tu llave maestra para acceder a los beneficios de la Ley de Emprendimiento.</p>
+
+                    <h3>2. Estructura Jurídica</h3>
+                    <p>Decide si operarás como firma personal o bajo una figura societaria. Cada una tiene implicaciones
+                        fiscales y de responsabilidad distintas que debes evaluar según tu escala de producción.</p>
+
+                    <p>En Fonaem, entendemos que este proceso puede parecer abrumador. Por eso, hemos digitalizado gran
+                        parte de la asesoría para que puedas realizar tus trámites desde la comodidad de tu hogar usando
+                        nuestra aplicación móvil.</p>
+
+                    <h3>3. Cumplimiento Progresivo</h3>
+                    <p>Una de las grandes ventajas de la ley actual es el acompañamiento de 2 años en el que los
+                        emprendedores gozan de exoneraciones y plazos flexibles para consolidar sus registros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="widget-wrapper"></div>
+        </div>
+    </footer>
+
+    <div class="copy-right">
+        <p>2026. Fondo Nacional para los Emprendimientos, S.A.</p>
+        <img src="assets/img/footer/footer_cintillo.png" alt="" />
+    </div>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>
