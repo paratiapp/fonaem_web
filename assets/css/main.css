@@ -437,6 +437,9 @@ p {
 
 .sticky {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 99;
   background-color: var(--primary-purple);
   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
@@ -485,6 +488,12 @@ p {
 
 .navbar-brand img {
   max-width: 220px;
+}
+
+@media (max-width: 767px) {
+  .navbar-brand img {
+    max-width: 150px;
+  }
 }
 
 .navbar-toggler {
