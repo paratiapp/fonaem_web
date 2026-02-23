@@ -1,15 +1,15 @@
 
-(function() {
-//===== Prealoder
+(function () {
+    //===== Prealoder
 
-	window.onload = function () {
-		window.setTimeout(fadeout, 500);
-	}
+    window.onload = function () {
+        window.setTimeout(fadeout, 500);
+    }
 
-	function fadeout() {
-		document.querySelector('.preloader').style.opacity = '0';
-		document.querySelector('.preloader').style.display = 'none';
-	}
+    function fadeout() {
+        document.querySelector('.preloader').style.opacity = '0';
+        document.querySelector('.preloader').style.display = 'none';
+    }
 
 
     /*=====================================
@@ -38,101 +38,121 @@
 
     // for menu scroll 
     var pageLink = document.querySelectorAll('.page-scroll');
-    
+
     pageLink.forEach(elem => {
         elem.addEventListener('click', e => {
-            e.preventDefault();
-            document.querySelector(elem.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth',
-                offsetTop: 1 - 60,
-            });
+            var href = elem.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                var target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        offsetTop: 1 - 60,
+                    });
+                }
+            }
         });
     });
 
     // section menu active
-	function onScroll(event) {
-		var sections = document.querySelectorAll('.page-scroll');
-		var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    function onScroll(event) {
+        var sections = document.querySelectorAll('.page-scroll');
+        var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 
-		for (var i = 0; i < sections.length; i++) {
-			var currLink = sections[i];
-			var val = currLink.getAttribute('href');
-			var refElement = document.querySelector(val);
-			var scrollTopMinus = scrollPos + 73;
-			if (refElement.offsetTop <= scrollTopMinus && (refElement.offsetTop + refElement.offsetHeight > scrollTopMinus)) {
-				document.querySelector('.page-scroll').classList.remove('active');
-				currLink.classList.add('active');
-			} else {
-				currLink.classList.remove('active');
-			}
-		}
-	};
+        for (var i = 0; i < sections.length; i++) {
+            var currLink = sections[i];
+            var val = currLink.getAttribute('href');
 
-	window.document.addEventListener('scroll', onScroll);
+            // Only process internal links
+            if (val.startsWith('#')) {
+                var refElement = document.querySelector(val);
+                if (refElement) {
+                    var scrollTopMinus = scrollPos + 73;
+                    if (refElement.offsetTop <= scrollTopMinus && (refElement.offsetTop + refElement.offsetHeight > scrollTopMinus)) {
+                        var activeLink = document.querySelector('.page-scroll.active');
+                        if (activeLink) activeLink.classList.remove('active');
+                        currLink.classList.add('active');
+                    } else {
+                        currLink.classList.remove('active');
+                    }
+                }
+            }
+        }
+    };
+
+    window.document.addEventListener('scroll', onScroll);
 
     //===== close navbar-collapse when a  clicked
-    let navbarToggler = document.querySelector(".navbar-toggler");    
+    let navbarToggler = document.querySelector(".navbar-toggler");
     var navbarCollapse = document.querySelector(".navbar-collapse");
 
-    document.querySelectorAll(".page-scroll").forEach(e =>
-        e.addEventListener("click", () => {
-            navbarToggler.classList.remove("active");
-            navbarCollapse.classList.remove('show')
-        })
-    );
-    navbarToggler.addEventListener('click', function() {
-        navbarToggler.classList.toggle("active");
-    }) 
+    if (navbarToggler && navbarCollapse) {
+        document.querySelectorAll(".page-scroll").forEach(e =>
+            e.addEventListener("click", () => {
+                navbarToggler.classList.remove("active");
+                navbarCollapse.classList.remove('show')
+            })
+        );
+        navbarToggler.addEventListener('click', function () {
+            navbarToggler.classList.toggle("active");
+            navbarCollapse.classList.toggle("show");
+        });
+    }
 
 
-	// WOW active
+    // WOW active
     new WOW().init();
 
-    
+
     //====== counter up 
-    var cu = new counterUp({
-        start: 0,
-        duration: 2000,
-        intvalues: true,
-        interval: 100,
-        append: " ",
-    });
-    cu.start();
+    try {
+        var cu = new counterUp({
+            start: 0,
+            duration: 2000,
+            intvalues: true,
+            interval: 100,
+            append: " ",
+        });
+        cu.start();
+    } catch (e) {
+        // counterUp not available on this page
+    }
 
 })();
 
 // ====== scroll top js
-function scrollTo(element, to = 0, duration= 1000) {
+function scrollTo(element, to = 0, duration = 1000) {
 
-	const start = element.scrollTop;
-	const change = to - start;
-	const increment = 20;
-	let currentTime = 0;
+    const start = element.scrollTop;
+    const change = to - start;
+    const increment = 20;
+    let currentTime = 0;
 
-	const animateScroll = (() => {
+    const animateScroll = (() => {
 
-		currentTime += increment;
+        currentTime += increment;
 
-		const val = Math.easeInOutQuad(currentTime, start, change, duration);
+        const val = Math.easeInOutQuad(currentTime, start, change, duration);
 
-		element.scrollTop = val;
+        element.scrollTop = val;
 
-		if (currentTime < duration) {
-			setTimeout(animateScroll, increment);
-		}
-	});
+        if (currentTime < duration) {
+            setTimeout(animateScroll, increment);
+        }
+    });
 
-	animateScroll();
+    animateScroll();
 };
 
 Math.easeInOutQuad = function (t, b, c, d) {
 
-	t /= d/2;
-	if (t < 1) return c/2*t*t + b;
-	t--;
-	return -c/2 * (t*(t-2) - 1) + b;
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
 };
 
 document.querySelector('.scroll-top').onclick = function () {
-	scrollTo(document.documentElement); 
+    scrollTo(document.documentElement);
 }
